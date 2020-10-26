@@ -186,7 +186,7 @@
  
  
 -   **Success Response:**
-	   Returned data : Todo item
+	   Data yang di kembalikan : 
  
     -   **Code:**  200 
         **Content:** 
@@ -235,7 +235,7 @@
     `DELETE` 
  
 -   **Success Response:**
-	   Returned data : Todo item 
+	   Data yang di kembalikan : 
  
     -   **Code:**  201 
         **Content:**
