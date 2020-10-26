@@ -59,9 +59,9 @@ class Controller {
   } 
 
   static patchTodos(req, res) {
-    const { title, description, status, due_date } = req.body
+    const { status } = req.body
     Todo.update({
-      title, description, status, due_date
+      status
     }, {
       where: {
         id: req.params.id
