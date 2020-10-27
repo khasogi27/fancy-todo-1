@@ -16,7 +16,7 @@ module.exports = {
         "title": "Lecture",
         "description": "Lecture Day 3",
         "status": "false",
-        "due_date": "2020-10-29 07:00:00+07",
+        "due_date": "2020-10-29",
         "createdAt": new Date(),
         "updatedAt": new Date()
       }

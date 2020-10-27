@@ -1,13 +1,13 @@
 const { Todo } = require('../models')
 
-class Controller {
-  
+class TodosController {
+
   static postTodos(req, res) {
     const { title, description, status, due_date } = req.body
     Todo.create({
       title, description, status, due_date
     }, {
-      where : {
+      where: {
         id: req.params.id
       }
     })
@@ -17,7 +17,7 @@ class Controller {
       .catch(err => {
         res.status(400)
       })
-  } 
+  }
 
   static getTodos(req, res) {
     Todo.findAll()
@@ -38,7 +38,7 @@ class Controller {
       .catch(err => {
         res.statuc(404)
       })
-  } 
+  }
 
   static putTodos(req, res) {
     const { title, description, status, due_date } = req.body
@@ -56,7 +56,7 @@ class Controller {
       .catch(err => {
         res.status(400)
       })
-  } 
+  }
 
   static patchTodos(req, res) {
     const { status } = req.body
@@ -92,4 +92,4 @@ class Controller {
 
 }
 
-module.exports = Controller
+module.exports = TodosController
