@@ -1,11 +1,11 @@
 const { Todo } = require('../models')
 
 class TodosController {
-
   static postTodos(req, res) {
+    const UserId = req.loggedInUser.id
     const { title, description, status, due_date } = req.body
     Todo.create({
-      title, description, status, due_date
+      title, description, status, due_date, UserId
     }, {
       where: {
         id: req.params.id
@@ -18,9 +18,13 @@ class TodosController {
         res.status(400)
       })
   }
-
   static getTodos(req, res) {
-    Todo.findAll()
+    const UserId = req.loggedInUser.id
+    Todo.findAll({
+      where: {
+        UserId
+      }
+    })
       .then(data => {
         res.status(200).json(data)
       })
@@ -28,7 +32,6 @@ class TodosController {
         res.status(500)
       })
   }
-
   static getTodosById(req, res) {
     const { id } = req.params
     Todo.findByPk(id)
@@ -39,7 +42,6 @@ class TodosController {
         res.statuc(404)
       })
   }
-
   static putTodos(req, res) {
     const { title, description, status, due_date } = req.body
     Todo.update({
@@ -57,7 +59,6 @@ class TodosController {
         res.status(400)
       })
   }
-
   static patchTodos(req, res) {
     const { status } = req.body
     Todo.update({
@@ -75,7 +76,6 @@ class TodosController {
         res.status(400)
       })
   }
-
   static deleteTodos(req, res) {
     Todo.destroy({
       where: {
@@ -89,7 +89,6 @@ class TodosController {
         res.status(404)
       })
   }
-
 }
 
 module.exports = TodosController

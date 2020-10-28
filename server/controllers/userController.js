@@ -3,7 +3,6 @@ const { comparePassword } = require('../helpers/bcrypt')
 const { signToken } = require('../helpers/jwt')
 
 class UserController {
-
   static signup(req, res) {
     const obj = {
       email: req.body.email,
@@ -20,7 +19,6 @@ class UserController {
         res.status(500).json(err)
       })
   }
-
   static signin(req, res) {
     const obj = {
       email: req.body.email,
@@ -54,7 +52,6 @@ class UserController {
         res.status(500).json(err)
       })
   }
-
 }
 
 module.exports = UserController
