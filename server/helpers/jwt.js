@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 
-const signToken = (obj) => {
-  const token = jwt.sign(obj, process.env.SECRET)
+const signToken = (payload) => {
+  const token = jwt.sign(payload, process.env.SECRET)
 
   return token
 }

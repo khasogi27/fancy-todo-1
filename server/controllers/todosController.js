@@ -6,16 +6,12 @@ class TodosController {
     const { title, description, status, due_date } = req.body
     Todo.create({
       title, description, status, due_date, UserId
-    }, {
-      where: {
-        id: req.params.id
-      }
     })
       .then(data => {
         res.status(201).json(data)
       })
       .catch(err => {
-        res.status(400)
+        res.status(500)
       })
   }
   static getTodos(req, res) {
@@ -39,7 +35,7 @@ class TodosController {
         res.status(200).json(data)
       })
       .catch(err => {
-        res.statuc(404)
+        res.status(500)
       })
   }
   static putTodos(req, res) {
@@ -56,7 +52,7 @@ class TodosController {
         res.status(200).json(data[1][0])
       })
       .catch(err => {
-        res.status(400)
+        res.status(500)
       })
   }
   static patchTodos(req, res) {
@@ -73,20 +69,23 @@ class TodosController {
         res.status(200).json(data)
       })
       .catch(err => {
-        res.status(400)
+        res.status(500)
       })
   }
   static deleteTodos(req, res) {
+    const { id } = req.params
     Todo.destroy({
       where: {
-        id: req.params.id
+        id
       }
     })
       .then(data => {
-        res.status(200).json(data)
+        res.status(200).json({
+          message: 'Todos success to delete'
+        })
       })
       .catch(err => {
-        res.status(404)
+        res.status(500)
       })
   }
 }

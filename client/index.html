@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- meta google oauth -->
+  <meta name="google-signin-client_id"
+    content="407146176632-63cm8pstokd17s907c10v4obhd6dfc2k.apps.googleusercontent.com">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <title>Todos</title>
+</head>
+
+<body
+  style="background-image: url(https://wallpaperaccess.com/full/2670510.jpg); background-size: cover;">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active mt-2">
+          <a class="nav-link text-white fas fa-check-circle fa-3x"></a>
+        </li>
+        <li class="nav-item active mt-3">
+          <a class="nav-link btn text-white fas fa-2x" id="navBtn" onclick="registerBtn()">Register</a>
+        </li>
+        <li class="nav-item active mt-3">
+          <a class="nav-link btn text-white fas fa-2x" id="navBtn1" onclick="loginNavBtn()">Login</a>
+        </li>
+        <li class="nav-item active mt-3" id="content">
+          <a class="btn btn-danger text-white fas fa-2x" onclick="logout();">Sign out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container d-flex align-items-center justify-content-center mt-3 fas">
+    <h1 class="md-5 text-white bg-primary fa-5x">Fancy Todo'S</h1>
+  </div>
+
+  <!-- login -->
+  <section class="container" id="login">
+    <div class="row justify-content-center mt-5">
+      <div class="col-4 fas">
+        <h1 class="text-white">Login</h1>
+        <form onsubmit="login(event)" class="text-white">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" class="form-control" placeholder="input your email" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="input your password"
+              autocomplete="current-password">
+          </div>
+          <button class="btn btn-dark">Login</button>
+        </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- register -->
+  <section class="container" id="register">
+    <div class="row justify-content-center mt-5 text-white">
+      <div class="col-4 fas">
+        <h1>Register</h1>
+        <form onsubmit="register(event)">
+          <div class="form-group">
+            <label form="name">Name</label>
+            <input type="text" id="req-name" class="form-control" placeholder="input your name" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label form="name">Email</label>
+            <input type="email" id="req-email" class="form-control" placeholder="input your email" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label form="password">Password</label>
+            <input type="password" id="req-password" class="form-control" placeholder="input your password"
+              autocomplete="current-password">
+          </div>
+          <button class="btn btn-dark">Register</button>
+          <div class="justify-content-center">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/c662304f2f.js" crossorigin="anonymous"></script>
+  <!-- ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- library google oauth -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
