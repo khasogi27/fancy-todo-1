@@ -106,12 +106,12 @@ function onSignIn(googleUser) {
 // Google sign out
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
-  localStorage.clear('token')
   $("#content").hide()
-  allContent()
+  hideContent()
   auth2.signOut().then(function () {
     console.log('User signed out.');
   });
+  localStorage.clear()
 }
 
 const hideContent = () => {
