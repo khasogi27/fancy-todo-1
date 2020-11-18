@@ -31,7 +31,7 @@ const login = (e) => {
 
   $.ajax({
     method: 'POST',
-    url: baseUrl + '/login',
+    url: baseUrl + '/signin',
     data: {
       email,
       password
@@ -55,7 +55,7 @@ const register = (e) => {
 
   $.ajax({
     method: 'POST',
-    url: baseUrl + '/register',
+    url: baseUrl + '/signup',
     data: {
       name,
       email,
@@ -85,7 +85,7 @@ function onSignIn(googleUser) {
   // console.log('Image URL: ' + profile.getImageUrl());
   // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   var google_access_token = googleUser.getAuthResponse().id_token;
-  console.log(google_access_token);
+  console.log(google_access_token, '<<< ini access_token dari google');
 
   $.ajax({
     method: 'POST',

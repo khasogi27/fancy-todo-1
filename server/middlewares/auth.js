@@ -1,7 +1,8 @@
-const { User } = require('../models')
+const { User, Todo } = require('../models')
 const { verifyToken } = require('../helpers/jwt')
 
-class Authentication {
+class Auth {
+
   static authentication(req, res, next) {
     const { token } = req.headers
     if (!token) {
@@ -34,6 +35,32 @@ class Authentication {
         })
     }
   }
+
+  static authorization(req, res, next) {
+    const { id } = req.params
+    Todo.findByPk(id)
+      .then(data => {
+        if (!data) {
+          res.status(404).json({
+            msg: 'Todo not fount'
+          })
+        } else if (data.UserId === req.loggedInUser.id) {
+          next()
+        } else {
+          res.status(401).json({
+            msg: 'Not authorized'
+          })
+        }
+      })
+      .catch(err => {
+        const status = err.status || 500
+        const msg = err.msg || 'Internal Server Error'
+        res.status(status).json({
+          error: msg
+        })
+      })
+  }
+
 }
 
-module.exports = Authentication
+module.exports = Auth
