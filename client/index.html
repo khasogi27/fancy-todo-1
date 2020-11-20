@@ -13,8 +13,7 @@
   <title>Todos</title>
 </head>
 
-<body
-  style="background-image: url(https://wallpaperaccess.com/full/2670510.jpg); background-size: cover;">
+<body style="background-image: url(https://wallpaperaccess.com/full/2670510.jpg); background-size: cover;">
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -83,6 +82,71 @@
       </div>
     </div>
   </section>
+
+  <!-- form edit Todos -->
+  <div class="jumbotron jumbotron-fluid bg-transparent" id="editTodo">
+    <div class="container" id="edit-todo">
+    </div>
+  </div>
+
+  <!-- form add Todos -->
+  <div class="jumbotron justify-content-center bg-transparent" id="addTodo">
+    <div class="container ">
+      <h1>Add New todos</h1>
+      <form id="add-todo" class="mx-auto">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputTitle">Title</label>
+            <input type="text" class="form-control" id="inputTitle" name="title">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputDescription">Description</label>
+            <input type="textbox" class="form-control" id="inputDescription" name="descripton">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputDate">Date</label>
+            <input type="date" class="form-control" id="inputDate" name="due_date">
+          </div>
+        </div>
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">Status</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" id="inputStatus" value="done">
+              <label class="form-check-label" for="status1">
+                Done
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" id="inputStatus2" value="undone">
+              <label class="form-check-label" for="status2">
+                Undone
+              </label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-danger">Add Todo</button>
+      </form>
+      <div class="mt-3">
+        <button class="btn btn-danger" onclick="afterLogin()">See List Todo</button>
+      </div>
+    </div>
+  </div>
+  <div id="main-page">
+<!-- todos card -->
+    <div class="jumbotron jumbotron-fluid bg-transparent" id="addCard">
+      <div class="container">
+        <div id="nameProfile">
+        </div>
+        <div class="row" id="listTodo">
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- font awesome -->
   <script src="https://kit.fontawesome.com/c662304f2f.js" crossorigin="anonymous"></script>

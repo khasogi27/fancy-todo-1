@@ -1,7 +1,8 @@
 const { Todo } = require('../models')
 
 class TodosController {
-  static postTodos(req, res) {
+
+  static postTodos(req, res, next) {
     const UserId = req.loggedInUser.id
     const { title, description, status, due_date } = req.body
     Todo.create({
@@ -11,10 +12,11 @@ class TodosController {
         res.status(201).json(data)
       })
       .catch(err => {
-        res.status(500)
+        next(err)
       })
   }
-  static getTodos(req, res) {
+
+  static getTodos(req, res, next) {
     const UserId = req.loggedInUser.id
     Todo.findAll({
       where: {
@@ -25,20 +27,22 @@ class TodosController {
         res.status(200).json(data)
       })
       .catch(err => {
-        res.status(500)
+        next(err)
       })
   }
-  static getTodosById(req, res) {
+
+  static getTodosById(req, res, next) {
     const { id } = req.params
     Todo.findByPk(id)
       .then(data => {
         res.status(200).json(data)
       })
       .catch(err => {
-        res.status(500)
+        next(err)
       })
   }
-  static putTodos(req, res) {
+
+  static putTodos(req, res, next) {
     const { title, description, status, due_date } = req.body
     Todo.update({
       title, description, status, due_date
@@ -52,10 +56,11 @@ class TodosController {
         res.status(200).json(data[1][0])
       })
       .catch(err => {
-        res.status(500)
+        next(err)
       })
   }
-  static patchTodos(req, res) {
+
+  static patchTodos(req, res, next) {
     const { status } = req.body
     Todo.update({
       status
@@ -69,10 +74,11 @@ class TodosController {
         res.status(200).json(data)
       })
       .catch(err => {
-        res.status(500)
+        next(err)
       })
   }
-  static deleteTodos(req, res) {
+
+  static deleteTodos(req, res, next) {
     const { id } = req.params
     Todo.destroy({
       where: {
@@ -85,9 +91,10 @@ class TodosController {
         })
       })
       .catch(err => {
-        res.status(500)
+        next(err)
       })
   }
+
 }
 
 module.exports = TodosController
